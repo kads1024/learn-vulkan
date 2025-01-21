@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <vector>
 #include <cstring>
+#include <optional>
 
 const uint16_t WINDOW_WIDTH = 800;
 const uint16_t WINDOW_HEIGHT = 600;
@@ -17,6 +18,15 @@ const bool ENABLE_VALIDATION_LAYERS = false;
 #else
 const bool ENABLE_VALIDATION_LAYERS = true;
 #endif // NDEBUG
+
+struct QueueFamilyIndices
+{
+    std::optional<uint32_t> graphicsFamily;
+
+    bool isComplete() {
+        return graphicsFamily.has_value();
+    }
+};
 
 // Proxy Function for Debug Util Messenger==================================================================
 VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger) {
@@ -50,6 +60,7 @@ private:
     GLFWwindow* m_window;
     VkInstance m_vulkanInstance;
     VkDebugUtilsMessengerEXT m_debugMessenger;
+    VkPhysicalDevice m_physicalDevice;
 
 private:
     void initWindow() 
@@ -70,6 +81,7 @@ private:
     {
         createVulkanInstance();
         setupDebugMessenger();
+        pickPhysicalDevice();
     }
 
     void mainLoop()
@@ -196,6 +208,71 @@ private:
         debugUtilsMessengerCreateInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
         debugUtilsMessengerCreateInfo.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
         debugUtilsMessengerCreateInfo.pfnUserCallback = debugCallback;
+    }
+
+    void pickPhysicalDevice() 
+    {
+        m_physicalDevice = VK_NULL_HANDLE;
+
+        uint32_t physicalDeviceCount = 0;
+        vkEnumeratePhysicalDevices(m_vulkanInstance, &physicalDeviceCount, nullptr);
+
+        if (physicalDeviceCount <= 0)
+            throw std::runtime_error("Failed to find GPUs with Vulkan support!");
+
+        std::vector<VkPhysicalDevice> physicalDevices(physicalDeviceCount);
+        vkEnumeratePhysicalDevices(m_vulkanInstance, &physicalDeviceCount, physicalDevices.data());
+
+        for (const VkPhysicalDevice& physicalDevice : physicalDevices) {
+            if (isPhysicalDeviceSuitable(physicalDevice)) {
+                m_physicalDevice = physicalDevice;
+               
+                break;
+            }
+        }
+
+        if (m_physicalDevice == VK_NULL_HANDLE) {
+            throw std::runtime_error("Failed to find a suitable GPU!");
+        }
+    }
+
+    bool isPhysicalDeviceSuitable(const VkPhysicalDevice& physicalDevice)
+    {
+        VkPhysicalDeviceProperties physicalDeviceProperties;
+        vkGetPhysicalDeviceProperties(physicalDevice, &physicalDeviceProperties);
+
+        VkPhysicalDeviceFeatures physicalDeviceFeatures;
+        vkGetPhysicalDeviceFeatures(physicalDevice, &physicalDeviceFeatures);
+
+        QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
+
+        return physicalDeviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU &&
+            queueFamilyIndices.isComplete();
+    }
+
+    QueueFamilyIndices findQueueFamilies(const VkPhysicalDevice& physicalDevice)
+    {
+        QueueFamilyIndices queueFamilyIndices;
+
+        uint32_t queueFamilyCount = 0;
+        vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, nullptr);
+
+        std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+        vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, &queueFamilyCount, queueFamilies.data());
+
+        int queueFamilyIndex = 0;
+        for (const VkQueueFamilyProperties& queueFamily : queueFamilies) {
+            if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+                queueFamilyIndices.graphicsFamily = queueFamilyIndex;
+            }
+            queueFamilyIndex++;
+
+            if (queueFamilyIndices.isComplete()) {
+                break;
+            }
+        }
+
+        return queueFamilyIndices;
     }
 };
 
