@@ -61,6 +61,8 @@ private:
     VkInstance m_vulkanInstance;
     VkDebugUtilsMessengerEXT m_debugMessenger;
     VkPhysicalDevice m_physicalDevice;
+    VkDevice m_device;
+    VkQueue m_graphicsQueue;
 
 private:
     void initWindow() 
@@ -82,6 +84,7 @@ private:
         createVulkanInstance();
         setupDebugMessenger();
         pickPhysicalDevice();
+        createLogicalDevice();
     }
 
     void mainLoop()
@@ -93,6 +96,8 @@ private:
 
     void cleanup()
     {
+        vkDestroyDevice(m_device, nullptr);
+
         if (ENABLE_VALIDATION_LAYERS)
             DestroyDebugUtilsMessengerEXT(m_vulkanInstance, m_debugMessenger, nullptr);
 
@@ -273,6 +278,38 @@ private:
         }
 
         return queueFamilyIndices;
+    }
+
+    void createLogicalDevice()
+    {
+        QueueFamilyIndices queueFamilyIndices = findQueueFamilies(m_physicalDevice);
+        float queuePriority = 1.0f;
+
+        VkDeviceQueueCreateInfo queueCreateInfo{};
+        queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+        queueCreateInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
+        queueCreateInfo.queueCount = 1;
+        queueCreateInfo.pQueuePriorities = &queuePriority;
+
+        VkPhysicalDeviceFeatures physicalDeviceFeatures{};
+
+        VkDeviceCreateInfo deviceCreateInfo{};
+        deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+        deviceCreateInfo.queueCreateInfoCount = 1;
+        deviceCreateInfo.pQueueCreateInfos = &queueCreateInfo;
+        deviceCreateInfo.pEnabledFeatures = &physicalDeviceFeatures;
+
+        if (ENABLE_VALIDATION_LAYERS) {
+            deviceCreateInfo.enabledLayerCount = static_cast<uint32_t>(VALIDATION_LAYERS.size());
+            deviceCreateInfo.ppEnabledLayerNames = VALIDATION_LAYERS.data();
+        }
+
+        VkResult deviceCreateResult = vkCreateDevice(m_physicalDevice, &deviceCreateInfo, nullptr, &m_device);
+
+        if (deviceCreateResult != VK_SUCCESS)
+            throw std::runtime_error("Failed to Create Logical Device!");
+
+        vkGetDeviceQueue(m_device, queueFamilyIndices.graphicsFamily.value(), 0, &m_graphicsQueue);
     }
 };
 
