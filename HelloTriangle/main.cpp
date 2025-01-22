@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstring>
 #include <optional>
+#include <set>
 
 const uint16_t WINDOW_WIDTH = 800;
 const uint16_t WINDOW_HEIGHT = 600;
@@ -22,9 +23,10 @@ const bool ENABLE_VALIDATION_LAYERS = true;
 struct QueueFamilyIndices
 {
     std::optional<uint32_t> graphicsFamily;
+    std::optional<uint32_t> presentFamily;
 
     bool isComplete() {
-        return graphicsFamily.has_value();
+        return graphicsFamily.has_value() && presentFamily.has_value();
     }
 };
 
@@ -60,9 +62,11 @@ private:
     GLFWwindow* m_window;
     VkInstance m_vulkanInstance;
     VkDebugUtilsMessengerEXT m_debugMessenger;
+    VkSurfaceKHR m_surface;
     VkPhysicalDevice m_physicalDevice;
     VkDevice m_device;
     VkQueue m_graphicsQueue;
+    VkQueue m_presentQueue;
 
 private:
     void initWindow() 
@@ -83,6 +87,7 @@ private:
     {
         createVulkanInstance();
         setupDebugMessenger();
+        createSurface();
         pickPhysicalDevice();
         createLogicalDevice();
     }
@@ -101,6 +106,7 @@ private:
         if (ENABLE_VALIDATION_LAYERS)
             DestroyDebugUtilsMessengerEXT(m_vulkanInstance, m_debugMessenger, nullptr);
 
+        vkDestroySurfaceKHR(m_vulkanInstance, m_surface, nullptr);
         vkDestroyInstance(m_vulkanInstance, nullptr);
 
         glfwDestroyWindow(m_window);
@@ -270,6 +276,13 @@ private:
             if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
                 queueFamilyIndices.graphicsFamily = queueFamilyIndex;
             }
+            
+            VkBool32 presentationSupport = false;
+            vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, queueFamilyIndex, m_surface, &presentationSupport);
+            if (presentationSupport) {
+                queueFamilyIndices.presentFamily = queueFamilyIndex;
+            }
+
             queueFamilyIndex++;
 
             if (queueFamilyIndices.isComplete()) {
@@ -285,18 +298,24 @@ private:
         QueueFamilyIndices queueFamilyIndices = findQueueFamilies(m_physicalDevice);
         float queuePriority = 1.0f;
 
-        VkDeviceQueueCreateInfo queueCreateInfo{};
-        queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-        queueCreateInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();
-        queueCreateInfo.queueCount = 1;
-        queueCreateInfo.pQueuePriorities = &queuePriority;
+        std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+        std::set<uint32_t> uniqueQueueFamilies = { queueFamilyIndices.graphicsFamily.value(), queueFamilyIndices.presentFamily.value() };
+
+        for (uint32_t queueFamily : uniqueQueueFamilies) {
+            VkDeviceQueueCreateInfo queueCreateInfo{};
+            queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+            queueCreateInfo.queueFamilyIndex = queueFamily;
+            queueCreateInfo.queueCount = 1;
+            queueCreateInfo.pQueuePriorities = &queuePriority;
+            queueCreateInfos.push_back(queueCreateInfo);
+        }
 
         VkPhysicalDeviceFeatures physicalDeviceFeatures{};
 
         VkDeviceCreateInfo deviceCreateInfo{};
         deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-        deviceCreateInfo.queueCreateInfoCount = 1;
-        deviceCreateInfo.pQueueCreateInfos = &queueCreateInfo;
+        deviceCreateInfo.queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size());
+        deviceCreateInfo.pQueueCreateInfos = queueCreateInfos.data();
         deviceCreateInfo.pEnabledFeatures = &physicalDeviceFeatures;
 
         if (ENABLE_VALIDATION_LAYERS) {
@@ -310,6 +329,15 @@ private:
             throw std::runtime_error("Failed to Create Logical Device!");
 
         vkGetDeviceQueue(m_device, queueFamilyIndices.graphicsFamily.value(), 0, &m_graphicsQueue);
+        vkGetDeviceQueue(m_device, queueFamilyIndices.presentFamily.value(), 0, &m_presentQueue);
+    }
+
+    void createSurface() 
+    {
+        VkResult createWindowSurfaceResult = glfwCreateWindowSurface(m_vulkanInstance, m_window, nullptr, &m_surface);
+        if (createWindowSurfaceResult != VK_SUCCESS)
+            throw std::runtime_error("Failed to create a window surface");
+
     }
 };
 
