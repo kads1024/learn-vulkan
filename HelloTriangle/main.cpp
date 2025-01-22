@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <limits>
 #include <algorithm>
-
+#include <string>
 const uint16_t WINDOW_WIDTH = 800;
 const uint16_t WINDOW_HEIGHT = 600;
 
@@ -84,6 +84,8 @@ private:
     // swap chain info
     VkFormat m_swapChainImageFormat;
     VkExtent2D m_swapChainExtent;
+
+    std::vector<VkImageView> m_swapChainImageViews;
 private:
     void initWindow() 
     {
@@ -107,6 +109,7 @@ private:
         pickPhysicalDevice();
         createLogicalDevice();
         createSwapChain();
+        createImageViews();
     }
 
     void mainLoop()
@@ -118,6 +121,10 @@ private:
 
     void cleanup()
     {
+        for (const VkImageView& imageView : m_swapChainImageViews) {
+            vkDestroyImageView(m_device, imageView, nullptr);
+        }
+
         vkDestroySwapchainKHR(m_device, m_swapChain, nullptr);
         vkDestroyDevice(m_device, nullptr);
 
@@ -511,6 +518,33 @@ private:
         m_swapChainImageFormat = surfaceFormat.format;
         m_swapChainExtent = extent;
     }
+
+    void createImageViews()
+    {
+        m_swapChainImageViews.resize(m_swapChainImages.size()); 
+
+        for (size_t i = 0; i < m_swapChainImageViews.size(); i++) {
+            VkImageViewCreateInfo imageViewCreateInfo{};
+            imageViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+            imageViewCreateInfo.image = m_swapChainImages[i];
+            imageViewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+            imageViewCreateInfo.format = m_swapChainImageFormat;
+            imageViewCreateInfo.components.r = VK_COMPONENT_SWIZZLE_IDENTITY;
+            imageViewCreateInfo.components.g = VK_COMPONENT_SWIZZLE_IDENTITY;
+            imageViewCreateInfo.components.b = VK_COMPONENT_SWIZZLE_IDENTITY;
+            imageViewCreateInfo.components.a = VK_COMPONENT_SWIZZLE_IDENTITY;
+            imageViewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            imageViewCreateInfo.subresourceRange.baseMipLevel = 0;
+            imageViewCreateInfo.subresourceRange.levelCount = 1;
+            imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
+            imageViewCreateInfo.subresourceRange.layerCount = 1;
+
+            VkResult imageViewCreateResult = vkCreateImageView(m_device, &imageViewCreateInfo, nullptr, &m_swapChainImageViews[i]);
+            if (imageViewCreateResult != VK_SUCCESS) {
+                throw std::runtime_error("Failed to Create Image view for Image[" + std::to_string(i) + "]");
+            }
+        }
+    }
 };
 
 
@@ -522,7 +556,8 @@ int main() {
         app.run();
     }
     catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "[RUNTIME_ERROR]: " << e.what() << std::endl;
+        system("pause");
         return EXIT_FAILURE;
     }
     system("pause");
