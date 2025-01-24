@@ -211,8 +211,11 @@
         <mxCell id="PMzsmYmVDIkMxbADWyHm-87" value="VkRenderPass" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="210" y="1440" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="PMzsmYmVDIkMxbADWyHm-126" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PMzsmYmVDIkMxbADWyHm-88" target="PMzsmYmVDIkMxbADWyHm-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="PMzsmYmVDIkMxbADWyHm-88" value="VkPhysicalDevice" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="210" y="800" width="120" height="60" as="geometry" />
+          <mxGeometry x="510" y="950" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="PMzsmYmVDIkMxbADWyHm-89" value="VkExtent2D" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="210" y="1300" width="120" height="60" as="geometry" />
@@ -327,6 +330,9 @@
             <mxPoint x="610" y="780" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="PMzsmYmVDIkMxbADWyHm-125" value="properties.deviceType&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;==&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DESCRETE_GPU&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;queueFamily == graphics &amp;amp;&amp;amp; present&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;extensions == SWAPCHAIN&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SWAPCHAIN SUPPORT:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Formats not Empty&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Present Mode not Empty&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="920" width="330" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
