@@ -77,6 +77,7 @@ private:
     VkInstance m_vulkanInstance;
     VkDebugUtilsMessengerEXT m_debugMessenger;
     VkSurfaceKHR m_surface;
+
     VkPhysicalDevice m_physicalDevice;
     VkDevice m_device;
     VkQueue m_graphicsQueue;
@@ -95,6 +96,8 @@ private:
     VkPipelineLayout m_pipelineLayout;
 
     VkPipeline m_graphicsPipeline;
+
+    std::vector<VkFramebuffer> m_swapChainFramebuffers;
 private:
     void initWindow() 
     {
@@ -121,6 +124,7 @@ private:
         createImageViews();
         createRenderPass();
         createGraphicsPipeline();
+        createFrameBuffers();
     }
 
     void mainLoop()
@@ -132,6 +136,10 @@ private:
 
     void cleanup()
     {
+        for (auto framebuffer : m_swapChainFramebuffers) {
+            vkDestroyFramebuffer(m_device, framebuffer, nullptr);
+        }
+
         vkDestroyPipeline(m_device, m_graphicsPipeline, nullptr);
         vkDestroyPipelineLayout(m_device, m_pipelineLayout, nullptr);
         vkDestroyRenderPass(m_device, m_renderPass, nullptr);
@@ -290,9 +298,6 @@ private:
     {
         VkPhysicalDeviceProperties physicalDeviceProperties;
         vkGetPhysicalDeviceProperties(physicalDevice, &physicalDeviceProperties);
-
-        VkPhysicalDeviceFeatures physicalDeviceFeatures;
-        vkGetPhysicalDeviceFeatures(physicalDevice, &physicalDeviceFeatures);
 
         QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
 
@@ -770,6 +775,31 @@ private:
         VkResult renderPassCreateResult = vkCreateRenderPass(m_device, &renderPassInfo, nullptr, &m_renderPass);
         if (renderPassCreateResult != VK_SUCCESS)
             throw std::runtime_error("Failed to create render pass!");
+    }
+
+    void createFrameBuffers() 
+    {
+        m_swapChainFramebuffers.resize(m_swapChainImageViews.size());
+
+        for (size_t i = 0; i < m_swapChainImageViews.size(); i++) {
+            VkImageView attachments[] = {
+                m_swapChainImageViews[i]
+            };
+
+            VkFramebufferCreateInfo framebufferInfo{};
+            framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+            framebufferInfo.renderPass = m_renderPass;
+            framebufferInfo.attachmentCount = 1;
+            framebufferInfo.pAttachments = attachments;
+            framebufferInfo.width = m_swapChainExtent.width;
+            framebufferInfo.height = m_swapChainExtent.height;
+            framebufferInfo.layers = 1;
+
+            VkResult frameBufferResult = vkCreateFramebuffer(m_device, &framebufferInfo, nullptr, &m_swapChainFramebuffers[i]);
+            if (frameBufferResult != VK_SUCCESS) {
+                throw std::runtime_error("failed to create framebuffer!");
+            }
+        }
     }
 };
 
