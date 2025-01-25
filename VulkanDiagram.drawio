@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0" version="26.0.7">
   <diagram name="Page-1" id="efARjDcXvOc3rk5b5u3u">
-    <mxGraphModel dx="2784" dy="1522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" background="#FFCCCC" math="0" shadow="1">
+    <mxGraphModel dx="1392" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" background="#FFCCCC" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -831,6 +831,9 @@
         <mxCell id="ZnzlMDfbqnj6RTHBl79q-19" value="needs a list of ImageViews per instance" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1020" y="1660" width="60" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-2" target="-DVIFqUI-L6RLMSxtlsU-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="-DVIFqUI-L6RLMSxtlsU-2" value="Create Command Pool" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="1650" y="160" width="120" height="60" as="geometry" />
         </mxCell>
@@ -872,6 +875,152 @@
         </mxCell>
         <mxCell id="-DVIFqUI-L6RLMSxtlsU-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.917;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-10" target="PMzsmYmVDIkMxbADWyHm-147">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-13" value="Create Command Buffer" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-15" target="-DVIFqUI-L6RLMSxtlsU-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-15" target="-DVIFqUI-L6RLMSxtlsU-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-15" value="VkCommandBuffer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="835" y="2120" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-16" value="VkCommandBufferAllocateInfo" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1045" y="2120" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-19" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-15" target="-DVIFqUI-L6RLMSxtlsU-20">
+          <mxGeometry x="-1" y="3" relative="1" as="geometry">
+            <mxPoint x="910" y="2300" as="sourcePoint" />
+            <mxPoint x="915" y="2290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-20" value="VkCommandBufferBeginInfo" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="2250" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-21" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-20">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1020" y="2379.58" as="sourcePoint" />
+            <mxPoint x="1025" y="2370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-22" value="Record commands" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="2370" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-23" value="End Command Buffer" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="2490" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-24" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-22" target="-DVIFqUI-L6RLMSxtlsU-23">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1035" y="2320" as="sourcePoint" />
+            <mxPoint x="1035" y="2380" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-25" target="-DVIFqUI-L6RLMSxtlsU-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-25" target="ZnzlMDfbqnj6RTHBl79q-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1350" y="2385" />
+              <mxPoint x="1350" y="1780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-25" target="PMzsmYmVDIkMxbADWyHm-89">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="2370" />
+              <mxPoint x="1380" y="1753" />
+              <mxPoint x="2170" y="1753" />
+              <mxPoint x="2170" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-25" value="VkRenderPassBeginInfo&lt;div&gt;Begin Renderpass&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="2370" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-27" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-22" target="-DVIFqUI-L6RLMSxtlsU-25">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1035" y="2440" as="sourcePoint" />
+            <mxPoint x="1035" y="2500" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-28" value="VkClearValue" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="2250" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.899;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-25" target="PMzsmYmVDIkMxbADWyHm-87">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1328" y="2370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-33" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1310" y="2399.41" as="sourcePoint" />
+            <mxPoint x="1360" y="2399.41" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-34" value="VkRenderPassBeginInfo&lt;div&gt;Begin Renderpass&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="2380" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-35" target="-DVIFqUI-L6RLMSxtlsU-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-35" value="Set Viewport" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="2380" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-37" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1510" y="2410" as="sourcePoint" />
+            <mxPoint x="1560" y="2410" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-DVIFqUI-L6RLMSxtlsU-38" target="-DVIFqUI-L6RLMSxtlsU-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-38" value="Set Scissor" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2380" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-39" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1710" y="2410" as="sourcePoint" />
+            <mxPoint x="1760" y="2410" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-40" value="VkViewport" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="2280" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-41" value="VkRect2D" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2280" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-44" value="Draw" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="2380" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-45" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="1910" y="2410" as="sourcePoint" />
+            <mxPoint x="1960" y="2410" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-46" value="End Renderpass" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="2160" y="2380" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-DVIFqUI-L6RLMSxtlsU-47" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="60" relative="1" as="geometry">
+            <mxPoint x="2110" y="2410" as="sourcePoint" />
+            <mxPoint x="2160" y="2410" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
