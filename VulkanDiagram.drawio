@@ -1103,6 +1103,12 @@
         <mxCell id="-rz0nxpONAQc5UW9_Xik-28" value="Record Command Buffer" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="900" y="240" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="-rz0nxpONAQc5UW9_Xik-30" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="260" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-rz0nxpONAQc5UW9_Xik-31" value="Wait Device Idle" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
