@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Documents\VisualStudio2022\Libraries\stb;C:\VulkanSDK\1.4.304.0\Include;D:\Documents\VisualStudio2022\Libraries\glm\include;D:\Documents\VisualStudio2022\Libraries\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Documents\VisualStudio2022\Libraries\tiny-obj-loader;D:\Documents\VisualStudio2022\Libraries\stb;C:\VulkanSDK\1.4.304.0\Include;D:\Documents\VisualStudio2022\Libraries\glm\include;D:\Documents\VisualStudio2022\Libraries\glfw\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -75,7 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Documents\VisualStudio2022\Libraries\stb;C:\VulkanSDK\1.4.304.0\Include;D:\Documents\VisualStudio2022\Libraries\glm\include;D:\Documents\VisualStudio2022\Libraries\glfw\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Documents\VisualStudio2022\Libraries\tiny-obj-loader;D:\Documents\VisualStudio2022\Libraries\stb;C:\VulkanSDK\1.4.304.0\Include;D:\Documents\VisualStudio2022\Libraries\glm\include;D:\Documents\VisualStudio2022\Libraries\glfw\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
