@@ -134,14 +134,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="VulkanApplication.cpp" />
-    <ClCompile Include="VulkanPipeline.cpp" />
-    <ClCompile Include="VulkanWindow.cpp" />
+    <ClCompile Include="core\VulkanApplication.cpp" />
+    <ClCompile Include="core\VulkanPipeline.cpp" />
+    <ClCompile Include="core\VulkanWindow.cpp" />
+    <ClCompile Include="core\VulkanDevice.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VulkanApplication.h" />
-    <ClInclude Include="VulkanPipeline.h" />
-    <ClInclude Include="VulkanWindow.h" />
+    <ClInclude Include="core\VulkanApplication.h" />
+    <ClInclude Include="core\VulkanPipeline.h" />
+    <ClInclude Include="core\VulkanWindow.h" />
+    <ClInclude Include="core\VulkanDevice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

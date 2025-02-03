@@ -1,8 +1,8 @@
-#include "VulkanApplication.h"
-
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+
+#include "core/VulkanApplication.h"
 
 int main() 
 {
