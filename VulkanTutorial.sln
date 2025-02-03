@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloTriangle", "HelloTriangle\HelloTriangle.vcxproj", "{6CAA1AE6-4AD5-43DE-9914-88A0B3D73768}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VulkanEngine", "VulkanEngine\VulkanEngine.vcxproj", "{DF39FF6A-2624-4B25-9A5B-4BA4020A3888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{6CAA1AE6-4AD5-43DE-9914-88A0B3D73768}.Debug|x64.Build.0 = Debug|x64
 		{6CAA1AE6-4AD5-43DE-9914-88A0B3D73768}.Release|x64.ActiveCfg = Release|x64
 		{6CAA1AE6-4AD5-43DE-9914-88A0B3D73768}.Release|x64.Build.0 = Release|x64
+		{DF39FF6A-2624-4B25-9A5B-4BA4020A3888}.Debug|x64.ActiveCfg = Debug|x64
+		{DF39FF6A-2624-4B25-9A5B-4BA4020A3888}.Debug|x64.Build.0 = Debug|x64
+		{DF39FF6A-2624-4B25-9A5B-4BA4020A3888}.Release|x64.ActiveCfg = Release|x64
+		{DF39FF6A-2624-4B25-9A5B-4BA4020A3888}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
