@@ -135,10 +135,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VulkanApplication.cpp" />
+    <ClCompile Include="VulkanPipeline.cpp" />
     <ClCompile Include="VulkanWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VulkanApplication.h" />
+    <ClInclude Include="VulkanPipeline.h" />
     <ClInclude Include="VulkanWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
